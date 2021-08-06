@@ -1,0 +1,179 @@
+\usepackage[LGR,T1]{fontenc}
+\usepackage[utf8]{inputenc}   % utf8 is required
+\newcommand{\textgreek}[1]{\begingroup\fontencoding{LGR}\selectfont#1\endgroup}
+\usepackage{nextpage}
+\usepackage[english]{babel}
+\usepackage{mparhack}
+\usepackage[smartEllipses,footnotes=true,hybrid]{markdown}
+\KOMAoptions{
+toc=chapterentrydotfill,
+headings=twolinechapter,
+headings=small,
+headings=optiontohead,
+numbers=noenddot,
+chapterprefix=true,
+toc=indent,
+fontsize=11pt,
+titlepage=true,
+titlepage=firstiscover,
+BCOR=2mm,
+DIV=12,
+parskip=false,
+footnotes=multiple,
+twoside=false,
+open=any,
+}\recalctypearea
+
+\usepackage{marginnote}
+\newcounter{fopagecnt}
+\renewcommand\thefopagecnt{\roman{fopagecnt}}
+\newcommand\fpg{%
+    \refstepcounter{fopagecnt}\marginnote{\smaller\thefopagecnt}
+}
+
+\newcounter{mopagecnt}
+\renewcommand\themopagecnt{\arabic{mopagecnt}}
+\newcommand\mpg{%
+    \refstepcounter{mopagecnt}\marginnote{\smaller\themopagecnt}
+}
+
+\renewcommand*{\chaptermarkformat}{}
+\renewcommand*{\raggedchapter}{\centering\Large}
+\renewcommand{\thechapter}{\Roman{chapter}}
+\renewcommand{\chapapp}{Chapter}
+
+\renewcommand*{\figureformat}{%
+  \figurename~\thefigure%
+}
+
+\counterwithout{footnote}{chapter}
+\counterwithout{figure}{chapter}
+\usepackage[automark]{scrlayer-scrpage}
+\clearpairofpagestyles
+\cehead{\textup{\textsc{\MakeLowercase{\chapapp\ \thechapter}}}}
+\cohead{\textup{\textsc{\MakeLowercase{\leftmark}}}}
+\cfoot{\normalfont\thepage}
+\setkomafont{chapter}{\large\scshape}
+
+\usepackage{relsize,etoolbox}
+\AtBeginEnvironment{quote}{\small}
+
+\usepackage{xpatch}
+\xpatchcmd{\addchaptertocentry}{%
+    \addtocentrydefault{chapter}{#1}{#2}%
+  }{%
+    \ifstr{#1}{}
+      {\addtocentrydefault{chapter}{#1}{#2}}%<- unnumbered chapters in TOC
+      {\addtocentrydefault{chapter}{\chapapp{} #1}{#2}}%<- numbered chapters in TOC
+  }{}
+
+
+
+\usepackage[noframe]{showframe}
+
+\setlength{\parindent}{0.85em}
+\RedeclareSectionCommands[
+  tocdynnumwidth,
+  tocraggedentrytext,
+  tocbreakafternumber=true,
+  tocentrynumberformat=\chapterentrynumber,
+  tocentryformat=\relax,
+  tocpagenumberformat=\relax,
+  tocindent=2em,
+  beforeskip=4.5\baselineskip,
+  afterskip=3.5\baselineskip,
+]{chapter}
+\newcommand*{\chapterentrynumber}[1]{%
+  \textsc{\hspace{-1em}#1}
+}
+
+\usepackage[labelformat=empty]{caption}
+
+\usepackage{verse}
+
+\usepackage{varwidth}
+\makeatletter
+\renewcommand\sectionlinesformat[4]{%
+  \ifstr{#1}{chapter}
+    {%
+      \raggedchapter
+      \adforn{36}\enskip
+      \begin{varwidth}{\dimexpr\textwidth-6em\relax}
+        \raggedchapter#3#4%
+      \end{varwidth}%
+      \enskip\adforn{36}%
+      \par\nobreak
+      \strut\rule{2em}{1pt}%
+      \par
+    }
+    {\@hangfrom{\hskip#2#3}{#4}}% original definition for other section levels
+}
+\makeatother
+\newcommand{\threeast}{\bigskip\bigskip\par\centerline{*\quad*\quad*}\bigskip\par}%
+\setkomafont{disposition}{\normalcolor\rmfamily}
+\usepackage{typearea}
+\usepackage{blindtext}
+\usepackage[pdftex,bookmarks=true,hidelinks]{hyperref}
+\usepackage[defaultlines=2,all]{nowidow}
+\usepackage[
+	dashed=true,
+	maxcitenames=2,
+	maxbibnames=3,
+	autocite=footnote,
+	backend=biber,
+	sorting=nyt,
+	citestyle=verbose,
+	bibstyle=authortitle,
+	isbn=false,
+	doi=false,
+	dateabbrev=false,
+]{biblatex}
+
+\usepackage[bottom,splitrule,hang,flushmargin,perpage,symbol]{footmisc}
+\renewcommand{\hangfootparskip}{0ex}
+\renewcommand{\hangfootparindent}{1em}
+\usepackage{csquotes}
+\setlength{\dimen0}{\textheight}
+\addtolength{\dimen0}{-\topskip}
+\divide\dimen0\baselineskip
+\setlength{\textheight}{\number\dimen0 \baselineskip}
+\addtolength{\textheight}{\topskip}
+\raggedbottom
+% ==============================================================
+\usepackage[
+    babel=true,
+    protrusion=true,
+    expansion=true,
+    spacing=true,
+    tracking=smallcaps,
+    kerning=true
+]{microtype}
+
+
+\setlength{\footskip}{2\baselineskip}
+\setlength{\headsep}{0.25\baselineskip}
+\setlength{\headheight}{3\baselineskip}
+% ======================================
+%\usepackage{libertine}
+%\usepackage{libertinust1math}
+%\usepackage[T1]{fontenc}
+% ==============================================================
+%\usepackage[T1]{fontenc}
+%\usepackage{OldStandard}
+% ======================================
+\usepackage[lf]{Baskervaldx}
+\usepackage{textgreek}
+\usepackage[bigdelims,vvarbb]{newtxmath}
+\usepackage[cal=boondoxo]{mathalfa}
+\renewcommand*\oldstylenums[1]{\textosf{#1}}
+% ==============================================================
+%\usepackage[cmintegrals,cmbraces]{newtxmath}
+%\usepackage{ebgaramond-maths}
+%\usepackage[T1]{fontenc}
+
+%\addbibresource{references.bib}
+\usepackage{lettrine}
+\setlength{\emergencystretch}{2pt}
+\def\drop #1#2 {% note the space before {
+  \lettrine[lines=2,loversize=0.15,lhang=0.3]{#1}{#2} % a trailing space
+}

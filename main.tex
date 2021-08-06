@@ -1,0 +1,64 @@
+\documentclass[b6paper]{scrbook}
+\input{settings.tex}
+
+\begin{document}
+
+\input{00_cover.tex}
+
+\maketitle
+\frontmatter
+
+\input{00_desc.tex}
+
+\pagestyle{empty}
+\cleartooddpage
+\tableofcontents
+\cleartooddpage
+\mainmatter
+\pagestyle{scrheadings}
+
+\markdownInput{00_preface.md}
+
+\begin{figure}[htbp]
+\linethickness{2pt}
+	\centering%
+	\frame{\includegraphics[height=24\baselineskip]{images/p00.jpg}}%
+	\caption{\textit{“Oh, were I only a man!” she sighed.}}
+\end{figure}
+
+\markdownInput{01.md}
+\markdownInput{02.md}
+\markdownInput{03a.md}
+\begin{figure}[htbp]
+\linethickness{2pt}
+	\centering%
+	\frame{\includegraphics[height=24\baselineskip]{images/p00b.jpg}}%
+	\caption{\textit{“Dear uncle, see these beautiful violets,” she cried.}}
+\end{figure}
+\markdownInput{03b.md}
+\markdownInput{04.md}
+\markdownInput{05a.md}
+\begin{figure}[htbp]
+\linethickness{2pt}
+	\centering%
+	\frame{\includegraphics[height=24\baselineskip]{images/p01.jpg}}%
+	\caption{\textit{The last act in the ceremony was Charles’s coronation}}
+\end{figure}
+\markdownInput{05b.md}
+\markdownInput{06a.md}
+\begin{figure}[htbp]
+\linethickness{2pt}
+	\centering%
+	\frame{\includegraphics[trim={1.75mm 1.75mm 1.75mm 1.75mm},clip,height=23\baselineskip,decodearray={0.2 0.3}]{images/p02.jpg}}%
+	\caption{\textit{The flames mounted higher, and the people saw, not a devil’s witch, but a praying angel with eyes fixed upon heaven.}}
+\end{figure}
+\markdownInput{06b.md}
+\markdownInput{07.md}
+
+\input{08_appendix.tex}
+
+\backmatter
+
+\input{LICENSE.tex}
+
+\end{document}
