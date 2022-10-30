@@ -4,37 +4,37 @@
 \usepackage{nextpage}
 \usepackage[english]{babel}
 \usepackage{mparhack}
-\usepackage[smartEllipses,footnotes=true,hybrid]{markdown}
+%\usepackage[smartEllipses,footnotes=true,hybrid]{markdown}
 \KOMAoptions{
-toc=chapterentrydotfill,
-headings=twolinechapter,
-headings=small,
-headings=optiontohead,
-numbers=noenddot,
-chapterprefix=true,
-toc=indent,
-fontsize=11pt,
-titlepage=true,
-titlepage=firstiscover,
-BCOR=2mm,
-DIV=12,
-parskip=false,
-footnotes=multiple,
-twoside=false,
-open=any,
+  toc=chapterentrydotfill,
+  headings=twolinechapter,
+  headings=small,
+  headings=optiontohead,
+  numbers=noenddot,
+  chapterprefix=true,
+  toc=indent,
+  fontsize=11pt,
+  titlepage=true,
+  titlepage=firstiscover,
+  BCOR=2mm,
+  DIV=12,
+  parskip=false,
+  footnotes=multiple,
+  twoside=false,
+  open=any,
 }\recalctypearea
 
 \usepackage{marginnote}
 \newcounter{fopagecnt}
 \renewcommand\thefopagecnt{\roman{fopagecnt}}
 \newcommand\fpg{%
-    \refstepcounter{fopagecnt}\marginnote{\smaller\thefopagecnt}
+  \refstepcounter{fopagecnt}\marginnote{\smaller\thefopagecnt}
 }
 
 \newcounter{mopagecnt}
 \renewcommand\themopagecnt{\arabic{mopagecnt}}
 \newcommand\mpg{%
-    \refstepcounter{mopagecnt}\marginnote{\smaller\themopagecnt}
+  \refstepcounter{mopagecnt}\marginnote{\smaller\themopagecnt}
 }
 
 \renewcommand*{\chaptermarkformat}{}
@@ -60,12 +60,12 @@ open=any,
 
 \usepackage{xpatch}
 \xpatchcmd{\addchaptertocentry}{%
-    \addtocentrydefault{chapter}{#1}{#2}%
-  }{%
-    \ifstr{#1}{}
-      {\addtocentrydefault{chapter}{#1}{#2}}%<- unnumbered chapters in TOC
-      {\addtocentrydefault{chapter}{\chapapp{} #1}{#2}}%<- numbered chapters in TOC
-  }{}
+  \addtocentrydefault{chapter}{#1}{#2}%
+}{%
+  \ifstr{#1}{}
+  {\addtocentrydefault{chapter}{#1}{#2}}%<- unnumbered chapters in TOC
+  {\addtocentrydefault{chapter}{\chapapp{} #1}{#2}}%<- numbered chapters in TOC
+}{}
 
 
 
@@ -95,18 +95,18 @@ open=any,
 \makeatletter
 \renewcommand\sectionlinesformat[4]{%
   \ifstr{#1}{chapter}
-    {%
-      \raggedchapter
-      \adforn{36}\enskip
-      \begin{varwidth}{\dimexpr\textwidth-6em\relax}
-        \raggedchapter#3#4%
-      \end{varwidth}%
-      \enskip\adforn{36}%
-      \par\nobreak
-      \strut\rule{2em}{1pt}%
-      \par
-    }
-    {\@hangfrom{\hskip#2#3}{#4}}% original definition for other section levels
+  {%
+    \raggedchapter
+    \adforn{36}\enskip
+    \begin{varwidth}{\dimexpr\textwidth-6em\relax}
+      \raggedchapter#3#4%
+    \end{varwidth}%
+    \enskip\adforn{36}%
+    \par\nobreak
+    \strut\rule{2em}{1pt}%
+    \par
+  }
+  {\@hangfrom{\hskip#2#3}{#4}}% original definition for other section levels
 }
 \makeatother
 \newcommand{\threeast}{\bigskip\bigskip\par\centerline{*\quad*\quad*}\bigskip\par}%
@@ -116,17 +116,17 @@ open=any,
 \usepackage[pdftex,bookmarks=true,hidelinks]{hyperref}
 \usepackage[defaultlines=2,all]{nowidow}
 \usepackage[
-	dashed=true,
-	maxcitenames=2,
-	maxbibnames=3,
-	autocite=footnote,
-	backend=biber,
-	sorting=nyt,
-	citestyle=verbose,
-	bibstyle=authortitle,
-	isbn=false,
-	doi=false,
-	dateabbrev=false,
+  dashed=true,
+  maxcitenames=2,
+  maxbibnames=3,
+  autocite=footnote,
+  backend=biber,
+  sorting=nyt,
+  citestyle=verbose,
+  bibstyle=authortitle,
+  isbn=false,
+  doi=false,
+  dateabbrev=false,
 ]{biblatex}
 
 \usepackage[bottom,splitrule,hang,flushmargin,perpage,symbol]{footmisc}
@@ -141,12 +141,12 @@ open=any,
 \raggedbottom
 % ==============================================================
 \usepackage[
-    babel=true,
-    protrusion=true,
-    expansion=true,
-    spacing=true,
-    tracking=smallcaps,
-    kerning=true
+  babel=true,
+  protrusion=true,
+  expansion=true,
+  spacing=true,
+  tracking=smallcaps,
+  kerning=true
 ]{microtype}
 
 
@@ -177,3 +177,5 @@ open=any,
 \def\drop #1#2 {% note the space before {
   \lettrine[lines=2,loversize=0.15,lhang=0.3]{#1}{#2} % a trailing space
 }
+
+\usepackage{graphicx}
